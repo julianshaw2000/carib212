@@ -28,6 +28,56 @@
 
  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Structured Data: LodgingBusiness (update URL & images to absolute URLs if possible) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Carib212 Apartment",
+    "description": "Sea-view, work-friendly apartment rental in Ocho Rios, Jamaica. Fast Wi-Fi, secure parking, close to Dunn’s River Falls, Blue Hole and Chukka.",
+    "url": "https://carib212.com/",
+    "image": [
+      "https://carib212.com/images/overview.jpg",
+      "https://carib212.com/images/living.avif",
+      "https://carib212.com/images/bedroom.avif"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ocho Rios",
+      "addressRegion": "St. Ann",
+      "addressCountry": "JM"
+    },
+    "telephone": "+1-876-707-1967",
+    "amenityFeature": [
+      {"@type":"LocationFeatureSpecification","name":"Free Wi-Fi","value":true},
+      {"@type":"LocationFeatureSpecification","name":"Sea view","value":true},
+      {"@type":"LocationFeatureSpecification","name":"Secure parking","value":true},
+      {"@type":"LocationFeatureSpecification","name":"Air conditioning","value":true}
+    ],
+    "hasMap": "https://www.google.com/maps/place/carib212/",
+    "sameAs": [
+      "https://www.airbnb.com/rooms/44134587"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is Carib212 suitable for remote work?","acceptedAnswer":{"@type":"Answer","text":"Yes. The apartment has fast Wi-Fi, a desk-friendly space and plenty of natural light."}},
+      {"@type":"Question","name":"How far is Carib212 from Dunn’s River Falls?","acceptedAnswer":{"@type":"Answer","text":"About 10–15 minutes by car, depending on traffic."}},
+      {"@type":"Question","name":"Is parking available?","acceptedAnswer":{"@type":"Answer","text":"Yes, on-site secure parking is available for guests."}},
+      {"@type":"Question","name":"What attractions are nearby?","acceptedAnswer":{"@type":"Answer","text":"Blue Hole, Dunn’s River Falls and Chukka adventure parks are all a short drive away."}}
+    ]
+  }
+  </script>
+
+
+
 </head>
 <body class="bg-gray-50 text-gray-800">
   <!-- Header / Hero Section -->
