@@ -197,13 +197,45 @@
         </span>
       </p>
       <!-- Stripe Payment Form Placeholder -->
-      <div id="stripe-payment-form-container" class="my-4">
 
 
-      </div>
+        <div id="stripe-payment-form-container" class="my-6">
+          <h3 class="text-xl font-semibold mb-2">Pay Online</h3>
+          <p class="text-gray-600 mb-6">Choose your currency. You’ll enter the exact amount on the next screen.</p>
 
-      </div>
-    </section>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto text-left">
+            <!-- JMD -->
+            <div class="border border-gray-200 rounded-xl p-5">
+              <h4 class="font-semibold mb-1">Pay in JMD (J$)</h4>
+              <p class="text-sm text-gray-600 mb-4">Suggested minimum: <strong>J$500</strong></p>
+              <!-- Replace with your JMD Payment Link Buy Button ID -->
+             <stripe-buy-button
+  buy-button-id="buy_btn_1S56bDHdqG9m6LJieTBB83wu"
+  publishable-key="pk_live_ClDpJrR8opC2nUExgtPcgEyf00tBXYxGMD"
+>
+</stripe-buy-button>
+              
+
+              <p class="text-xs text-gray-500 mt-3">Minimum/maximum are configured in your JMD Payment Link.</p>
+            </div>
+
+            <!-- USD -->
+            <div class="border border-gray-200 rounded-xl p-5">
+              <h4 class="font-semibold mb-1">Pay in USD ($)</h4>
+              <p class="text-sm text-gray-600 mb-4">Suggested minimum: <strong>$5</strong></p>
+              <stripe-buy-button
+                buy-button-id="buy_btn_1S4wNaHdqG9m6LJijg0GIrCm"
+                publishable-key="pk_live_ClDpJrR8opC2nUExgtPcgEyf00tBXYxGMD">
+              </stripe-buy-button>
+              <p class="text-xs text-gray-500 mt-3">Minimum/maximum are configured in your USD Payment Link.</p>
+            </div>
+
+
+
+
+      <!-- <div id="stripe-payment-form-container" class="my-4">
+
+        
         <div class="flex justify-center">
           <stripe-buy-button
             buy-button-id="buy_btn_1S4wNaHdqG9m6LJijg0GIrCm"
@@ -211,6 +243,12 @@
           >
           </stripe-buy-button>
         </div>
+
+
+      </div> -->
+
+      </div>
+    </section>
 
   </main>
 
