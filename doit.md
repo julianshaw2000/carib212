@@ -16,6 +16,9 @@ Create a single index.html file.
 
 Include the Tailwind CSS CDN link in the <head> of the document: <script src="https://cdn.tailwindcss.com"></script>.
 
+**Add a favicon:**  
+Include a favicon.ico by adding `<link rel="icon" type="image/x-icon" href="favicon.ico">` in the <head> section.
+
 Place all JavaScript within a <script> block before the closing </body> tag.
 
 The main structure should consist of a <header>, a <main>, and a <footer>.
