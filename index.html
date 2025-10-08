@@ -62,7 +62,7 @@
         {"@type":"LocationFeatureSpecification","name":"Secure parking","value":true},
         {"@type":"LocationFeatureSpecification","name":"Air conditioning","value":true},
         {"@type":"LocationFeatureSpecification","name":"Beach access","value":true},
-        {"@type":"LocationFeatureSpecification","name":"Mahogany Beach","value":true} // Added beach feature
+        {"@type":"LocationFeatureSpecification","name":"Mahogany Beach","value":true}
       ],
       "hasMap": "https://www.google.com/maps/place/carib212/",
       "sameAs": [
@@ -90,19 +90,21 @@
     <!-- Navigation Bar -->
     <nav class="flex items-center justify-between px-8 py-4 bg-gray-900 bg-opacity-65 fixed w-full z-10">
       <div class="flex items-center gap-3">
-        <img src="images/overview.jpg" alt="Carib212 Logo" class="h-12 w-12 rounded-full hidden md:block object-cover">
+        <img src="images/overview.jpg" alt="Carib212 Logo" class="h-8 w-8 rounded-full hidden md:block">
         <span class="font-bold text-lg text-teal-300">Carib212</span>
       </div>
       <ul class="hidden md:flex gap-8">
         <li><a href="#adventures-section" class="hover:text-teal-300 text-white transition">Adventures</a></li>
         <li><a href="#apartments-section" class="hover:text-teal-300 text-white transition">Apartments</a></li>
         <li><a href="#booking-section" class="hover:text-teal-300 text-white transition">Booking</a></li>
+        <li><a href="#local-guide" class="hover:text-teal-300 text-white transition">Local Guide</a></li>
       </ul>
       <!-- Airbnb Button -->
       <a href="https://www.airbnb.com/rooms/44134587?source_impression_id=p3_1614918663_1U86TPLw9DkawtLH&guests=1&adults=1"
          target="_blank" class="ml-4">
-        <img src="images/airbnb-logo.jpeg" alt="Airbnb" class="h-18 w-18 rounded-full object-cover"  >
-      </a>      <!-- Mobile Menu Button -->
+        <img src="images/airbnb-logo.jpeg" alt="Airbnb" class="h-8 w-8 rounded-full object-cover">
+      </a>
+      <!-- Mobile Menu Button -->
       <button id="mobile-menu-btn" class="md:hidden p-2 text-white">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
       </button>
@@ -112,6 +114,7 @@
       <a href="#adventures-section" class="text-lg text-white hover:text-teal-300">Adventures</a>
       <a href="#apartments-section" class="text-lg text-white hover:text-teal-300">Apartments</a>
       <a href="#booking-section" class="text-lg text-white hover:text-teal-300">Booking</a>
+      <a href="#local-guide" class="text-lg text-white hover:text-teal-300">Local Guide</a>
     </div>
     <!-- Hero Content -->
     <div class="flex flex-col items-center justify-center h-full w-full bg-cover bg-center" style="background-image: url('images/overview.jpg');">
@@ -152,6 +155,94 @@
         </div>
       </div>
     </section>
+
+    <!-- Local Guide: Food, Beaches & Reggae -->
+<section id="local-guide" class="my-12 px-8">
+  <h2 class="text-3xl font-bold text-teal-500 mb-2 text-center">Local Guide: Food, Beaches &amp; Reggae</h2>
+  <p class="text-center text-gray-600 mb-8">Julian’s on-the-ground picks around Ocho Rios</p>
+
+  <!-- Breakfast + Market -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <article class="bg-white rounded-lg shadow overflow-hidden">
+      <img src="./images/missT.png" alt="Miss T’s Kitchen outdoor dining, Ocho Rios" class="w-full h-56 object-cover">
+      <div class="p-5">
+        <h3 class="text-xl font-semibold mb-1">Miss T’s Kitchen</h3>
+        <p class="text-gray-600 mb-3">Authentic Jamaican breakfast (also great for lunch &amp; dinner) in a lush yard setting.</p>
+        <a href="https://maps.app.goo.gl/thSfXZENqYRfgYih6" target="_blank" rel="noopener" class="text-teal-600 hover:underline">Open in Google Maps →</a>
+      </div>
+    </article>
+
+    <article class="bg-white rounded-lg shadow overflow-hidden">
+      <img src="./images/farm.jpg" alt="Farmers market produce in Jamaica" class="w-full h-56 object-cover">
+      <div class="p-5">
+        <h3 class="text-xl font-semibold mb-1">Saturday Farmers Market</h3>
+        <p class="text-gray-600 mb-2">Laid-back market with fresh fruit, coconuts &amp; herbs. Best selection before <strong>1:00 PM</strong>.</p>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="text-xs bg-teal-50 text-teal-700 px-2 py-1 rounded-full">Fresh fruit</span>
+          <span class="text-xs bg-teal-50 text-teal-700 px-2 py-1 rounded-full">Coconuts</span>
+          <span class="text-xs bg-teal-50 text-teal-700 px-2 py-1 rounded-full">Herbal remedies</span>
+        </div>
+        <a href="https://maps.app.goo.gl/dsQyjhKZzUxQumyq6?g_st=ac" target="_blank" rel="noopener" class="text-teal-600 hover:underline">Open in Google Maps →</a>
+      </div>
+    </article>
+  </div>
+
+
+  <!-- Dining -->
+  <h3 class="text-2xl font-bold text-teal-500 mb-4">Dining</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <!-- Ciao Bella (replaces Evita) -->
+    <article class="bg-white rounded-lg shadow overflow-hidden">
+      <img src="./images//italian.webp"
+           alt="Ciao Bella Art Cafe &amp; Restaurant — coffee, pastries, fresh juice"
+           class="w-full h-56 object-cover">
+      <div class="p-5">
+        <h4 class="text-lg font-semibold mb-1">Ciao Bella Art Cafe &amp; Restaurant</h4>
+        <p class="text-gray-600 mb-3">Italian comfort food, brunch &amp; art vibe at Taj Mahal Plaza (central Ochi).</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Ciao+Bella+Art+Cafe+%26+Restaurant+Ocho+Rios"
+           target="_blank" rel="noopener" class="text-teal-600 hover:underline">
+          Open in Google Maps →
+        </a>
+      </div>
+    </article>
+
+    <article class="bg-white rounded-lg shadow overflow-hidden">
+      <img src="https://www.margaritavillecaribbean.com/content/uploads/2017/07/ocho-exterior-beach-hut-190x110.jpg" alt="Margaritaville Ocho Rios exterior beach hut" class="w-full h-56 object-cover">
+      <div class="p-5">
+        <h4 class="text-lg font-semibold mb-1">Margaritaville Ocho Rios</h4>
+        <p class="text-gray-600 mb-3">Beach-club vibe, pool &amp; nightlife. Tourist-friendly fun.</p>
+        <a href="https://maps.app.goo.gl/gvA6b14och2jEozi6?g_st=aw" target="_blank" rel="noopener" class="text-teal-600 hover:underline">Open in Google Maps →</a>
+      </div>
+    </article>
+  </div>
+
+  <!-- Live Reggae & Nightlife -->
+  <h3 class="text-2xl font-bold text-teal-500 mb-4">Live Reggae &amp; Nightlife</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <article class="bg-white rounded-lg shadow overflow-hidden">
+      <img src="./images/ocean11.jpg" alt="Ocean’s 11 meal and waterfront table" class="w-full h-56 object-cover">
+      <div class="p-5">
+        <h4 class="text-lg font-semibold mb-1">Ocean’s 11</h4>
+        <p class="text-gray-600 mb-3">Local legend on the water — frequent live reggae &amp; karaoke nights.</p>
+        <a href="https://maps.app.goo.gl/E73MYjyt2ZveB7e16?g_st=aw" target="_blank" rel="noopener" class="text-teal-600 hover:underline">Open in Google Maps →</a>
+      </div>
+    </article>
+
+     <article class="bg-white rounded-lg shadow overflow-hidden">
+      <img src="./images/icecream.jpg" alt="Plant-based ice cream in a cup" class="w-full h-56 object-cover">
+      <div class="p-5">
+        <h3 class="text-xl font-semibold mb-1">Plant-Based Ice Cream</h3>
+        <p class="text-gray-600 mb-3">Great vegan-friendly stop after the market.</p>
+        <a href="https://maps.app.goo.gl/9CyaJK8yS277wjU38?g_st=aw" target="_blank" rel="noopener" class="text-teal-600 hover:underline">Open in Google Maps →</a>
+      </div>
+    </article>
+  </div>
+
+  <p class="text-xs text-gray-500 mt-6 text-center">
+    Photo credits: Miss T’s Kitchen, Ciao Bella, Margaritaville Caribbean, ConnectingJamaica.com, Wikimedia Commons, Unsplash (ice cream).
+    Schedules can change — check venue pages or call ahead.
+  </p>
+</section>
 
     <!-- Featured Apartments Carousel Section -->
     <section id="apartments-section" class="my-12 px-8">
@@ -249,10 +340,9 @@
 
   <!-- JavaScript for Carousel and Mobile Menu -->
   <script>
-    // Carousel images array (fixed extensions and paths)
+    // Carousel images array (fixed extensions and paths) — duplicates removed
     const apartmentImages  = [
-    'images/sundown.jpeg',
-      'images/bathroom.avif',
+      'images/sundown.jpeg',
       'images/bathroom.avif',
       'images/bedroom.avif',
       'images/bedroom2.avif',
@@ -269,7 +359,6 @@
       'images/patio2.avif',
       'images/patio3.jpg',
       'images/patio4.jpg',
-      'images/sundown.jpeg',
       'images/view.avif',
       'images/view2.jpg',
       'images/view3.jpeg',
@@ -313,8 +402,10 @@
   </script>
 </body>
 </html>
+          mobileMenu.classList.add('hidden'); // Hide mobile menu after click
+        }
+      });
+    });
+  </script>
 </body>
-</html>
-</html>
-</html>
 </html>
