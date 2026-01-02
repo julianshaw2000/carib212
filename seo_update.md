@@ -6,7 +6,7 @@ Context:
 - Single static HTML file (shown below) using Tailwind CDN.
 - Current <title> is “Carib212 Apartment Rental”.
 - There are 2 Airbnb links using a placeholder “your-room-id”.
-- Real Airbnb URL: https://www.airbnb.com/rooms/44134587?source_impression_id=p3_1614918663_1U86TPLw9DkawtLH&guests=1&adults=1
+- Real Airbnb URL: https://airbnb.com/h/carib212.com
 
 Make these edits:
 

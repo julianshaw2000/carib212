@@ -1089,7 +1089,7 @@
                         <div class="booking-card-icon">🏠</div>
                         <h3>Airbnb</h3>
                         <p>Book instantly through Airbnb with verified reviews and secure payment</p>
-                        <a href="https://www.airbnb.com/rooms/44134587" target="_blank" class="cta-button">Book on Airbnb</a>
+                        <a href="https://airbnb.com/h/carib212.com" target="_blank" class="cta-button">Book on Airbnb</a>
                     </div>
                     <div class="booking-card reveal">
                         <div class="booking-card-icon">💳</div>
