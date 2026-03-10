@@ -7,7 +7,7 @@
     <title>Ocho Rios Airbnb – Oceanfront 1-Bed Condo | Carib212</title>
     <meta name="description" content="Ocho Rios Airbnb oceanfront 1-bedroom condo at Carib212 with sea views, fast Wi-Fi and parking near Dunn's River Falls and top attractions.">
     <meta name="robots" content="index,follow">
-    <meta name="theme-color" content="#006B8F">
+    <meta name="theme-color" content="#0B1D2E">
 
     <!-- Google SEO -->
     <link rel="canonical" href="https://carib212.com/">
@@ -59,7 +59,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Structured Data: LodgingBusiness & FAQPage -->
     <script type="application/ld+json">
@@ -205,69 +205,63 @@
     <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-    <!-- Navigation -->
+
+    <!-- ===== Navigation ===== -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Carib212</a>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <a href="#" class="logo">Carib<span style="font-weight:400;">212</span></a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#adventures-section">Adventures</a></li>
-                <li><a href="#apartments-section">Apartments</a></li>
+                <li><a href="#apartments-section">The Space</a></li>
                 <li><a href="#local-guide">Local Guide</a></li>
-                <li><a href="#booking-section" class="cta-button">Book Now</a></li>
+                <li><a href="#booking-section" class="cta-button">Reserve</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ===== Hero ===== -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-subtitle">Ocho Rios, Jamaica</div>
-                <h1 class="hero-title">Ocho Rios Airbnb – Carib212 Oceanfront Condo</h1>
-                <p class="hero-description">Experience the best of Ocho Rios with stunning sea views, fast Wi-Fi, and proximity to Jamaica's top attractions.</p>
+                <h1 class="hero-title">Your Oceanfront<br>Escape Awaits</h1>
+                <p class="hero-description">Wake to the Caribbean Sea from a sun-drenched condo with panoramic views, fast Wi-Fi, and Jamaica's best attractions at your doorstep.</p>
                 <div class="hero-buttons">
                     <a href="#booking-section" class="primary-button">Book Your Stay</a>
-                    <a href="#apartments-section" class="secondary-button">View Gallery</a>
-                    <a
-                            href="https://airbnb.com/h/carib212"
-                            target="_blank"
-                            rel="noopener"
-                            class="airbnb-hero-button"
-                        >
-                        Book on Airbnb
-                    </a>
+                    <a href="#apartments-section" class="secondary-button">View the Space</a>
+                    <a href="https://airbnb.com/h/carib212" target="_blank" rel="noopener" class="airbnb-hero-button">Book on Airbnb</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Strip -->
+    <!-- ===== Features Strip ===== -->
     <div class="features-strip">
         <div class="features-container">
             <div class="feature-item reveal">
-                <div class="feature-icon">🌊</div>
+                <div class="feature-icon">&#127754;</div>
                 <div class="feature-text">
                     <h4>Ocean Views</h4>
                     <p>Spectacular sea panoramas</p>
                 </div>
             </div>
             <div class="feature-item reveal">
-                <div class="feature-icon">📶</div>
+                <div class="feature-icon">&#128246;</div>
                 <div class="feature-text">
                     <h4>High-Speed WiFi</h4>
                     <p>Perfect for remote work</p>
                 </div>
             </div>
             <div class="feature-item reveal">
-                <div class="feature-icon">🅿️</div>
+                <div class="feature-icon">&#127359;&#65039;</div>
                 <div class="feature-text">
                     <h4>Free Parking</h4>
                     <p>Secure on-site parking</p>
                 </div>
             </div>
             <div class="feature-item reveal">
-                <div class="feature-icon">🏖️</div>
+                <div class="feature-icon">&#127958;&#65039;</div>
                 <div class="feature-text">
                     <h4>Prime Location</h4>
                     <p>Minutes from attractions</p>
@@ -276,17 +270,17 @@
         </div>
     </div>
 
-    <!-- Adventures Section -->
+    <!-- ===== Adventures ===== -->
     <section id="adventures-section">
         <div class="section-container">
             <div class="section-header reveal">
                 <div class="section-subtitle">Explore</div>
                 <h2 class="section-title">Adventures Nearby</h2>
             </div>
-            <div class="adventures-grid">
+            <div class="adventures-grid reveal-stagger">
                 <div class="adventure-card reveal">
                     <div class="adventure-image">
-                        <img src="images/attractions/bluehole.jpeg" alt="Blue Hole turquoise waters">
+                        <img src="images/attractions/bluehole.jpeg" alt="Blue Hole turquoise waters" loading="lazy">
                     </div>
                     <div class="adventure-content">
                         <h3>Blue Hole</h3>
@@ -295,7 +289,7 @@
                 </div>
                 <div class="adventure-card reveal">
                     <div class="adventure-image">
-                        <img src="images/attractions/dunns.jpeg" alt="Dunn's River Falls cascading waterfalls">
+                        <img src="images/attractions/dunns.jpeg" alt="Dunn's River Falls cascading waterfalls" loading="lazy">
                     </div>
                     <div class="adventure-content">
                         <h3>Dunn's River Falls</h3>
@@ -304,7 +298,7 @@
                 </div>
                 <div class="adventure-card reveal">
                     <div class="adventure-image">
-                        <img src="images/attractions/majestic.jpeg" alt="Chukka Park adventure activities">
+                        <img src="images/attractions/majestic.jpeg" alt="Chukka Park adventure activities" loading="lazy">
                     </div>
                     <div class="adventure-content">
                         <h3>Chukka Park Rides</h3>
@@ -315,53 +309,53 @@
         </div>
     </section>
 
-    <!-- Local Guide Section -->
+    <!-- ===== Local Guide ===== -->
     <section id="local-guide">
         <div class="section-container">
             <div class="section-header reveal">
                 <div class="section-subtitle">Insider Tips</div>
-                <h2 class="section-title">Local Guide: Food, Beaches & Reggae</h2>
+                <h2 class="section-title">Local Guide</h2>
             </div>
-            <p class="guide-intro reveal">Julian's on-the-ground picks around Ocho Rios</p>
+            <p class="guide-intro reveal">Julian's on-the-ground picks for food, beaches &amp; reggae around Ocho Rios</p>
 
             <div class="guide-categories">
                 <!-- Food & Markets -->
                 <div class="guide-category reveal">
-                    <h3>Food & Markets</h3>
+                    <h3>Food &amp; Markets</h3>
                     <div class="guide-grid">
                         <div class="guide-card">
                             <div class="guide-card-image">
-                                <img src="images/missT.png" alt="Miss T's Kitchen outdoor dining, Ocho Rios">
+                                <img src="images/missT.png" alt="Miss T's Kitchen outdoor dining, Ocho Rios" loading="lazy">
                             </div>
                             <div class="guide-card-content">
                                 <h4>Miss T's Kitchen</h4>
-                                <p>Authentic Jamaican breakfast (also great for lunch & dinner) in a lush yard setting. Experience true local flavors.</p>
-                                <a href="https://maps.app.goo.gl/nnVfbEAgZMKZTuDh6" target="_blank" rel="noopener" class="map-link">Open in Google Maps →</a>
+                                <p>Authentic Jamaican breakfast (also great for lunch &amp; dinner) in a lush yard setting. Experience true local flavors.</p>
+                                <a href="https://maps.app.goo.gl/nnVfbEAgZMKZTuDh6" target="_blank" rel="noopener" class="map-link">Open in Google Maps &rarr;</a>
                             </div>
                         </div>
                         <div class="guide-card">
                             <div class="guide-card-image">
-                                <img src="images/atkins.jpg" alt="Atkins Fish Pot">
+                                <img src="images/atkins.jpg" alt="Atkins Fish Pot" loading="lazy">
                             </div>
                             <div class="guide-card-content">
                                 <h4>Atkins Fish Pot</h4>
                                 <p>Best fish in Ocho Rios next to White River</p>
-                                <a href="https://maps.app.goo.gl/thSfXZENqYRfgYih6" target="_blank" rel="noopener" class="map-link">Open in Google Maps →</a>
+                                <a href="https://maps.app.goo.gl/thSfXZENqYRfgYih6" target="_blank" rel="noopener" class="map-link">Open in Google Maps &rarr;</a>
                             </div>
                         </div>
                         <div class="guide-card">
                             <div class="guide-card-image">
-                                <img src="images/farm.jpg" alt="Farmers market produce in Jamaica">
+                                <img src="images/farm.jpg" alt="Farmers market produce in Jamaica" loading="lazy">
                             </div>
                             <div class="guide-card-content">
                                 <h4>Fridays Organic Farmers Market</h4>
-                                <p>Laid-back market with fresh fruit, coconuts & herbs. Best selection before <strong>1:00 PM</strong>.</p>
+                                <p>Laid-back market with fresh fruit, coconuts &amp; herbs. Best selection before <strong>1:00 PM</strong>.</p>
                                 <div class="guide-tags">
                                     <span class="tag">Fresh fruit</span>
                                     <span class="tag">Coconuts</span>
                                     <span class="tag">Herbal remedies</span>
                                 </div>
-                                <a href="https://maps.app.goo.gl/GBjWXY9ptmndi8wL9" target="_blank" rel="noopener" class="map-link">Open in Google Maps →</a>
+                                <a href="https://maps.app.goo.gl/GBjWXY9ptmndi8wL9" target="_blank" rel="noopener" class="map-link">Open in Google Maps &rarr;</a>
                             </div>
                         </div>
                     </div>
@@ -373,22 +367,22 @@
                     <div class="guide-grid">
                         <div class="guide-card">
                             <div class="guide-card-image">
-                                <img src="images/italian.webp" alt="Ciao Bella Art Cafe & Restaurant">
+                                <img src="images/italian.webp" alt="Ciao Bella Art Cafe & Restaurant" loading="lazy">
                             </div>
                             <div class="guide-card-content">
-                                <h4>Ciao Bella Art Cafe & Restaurant</h4>
-                                <p>Italian comfort food, brunch & art vibe at Taj Mahal Plaza (central Ochi). Perfect for a relaxed meal.</p>
-                                <a href="https://www.google.com/maps/search/?api=1&query=Ciao+Bella+Art+Cafe+%26+Restaurant+Ocho+Rios" target="_blank" rel="noopener" class="map-link">Open in Google Maps →</a>
+                                <h4>Ciao Bella Art Cafe &amp; Restaurant</h4>
+                                <p>Italian comfort food, brunch &amp; art vibe at Taj Mahal Plaza (central Ochi). Perfect for a relaxed meal.</p>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Ciao+Bella+Art+Cafe+%26+Restaurant+Ocho+Rios" target="_blank" rel="noopener" class="map-link">Open in Google Maps &rarr;</a>
                             </div>
                         </div>
                         <div class="guide-card">
                             <div class="guide-card-image">
-                                <img src="https://www.margaritavillecaribbean.com/content/uploads/2017/07/ocho-exterior-beach-hut-190x110.jpg" alt="Margaritaville Ocho Rios">
+                                <img src="https://www.margaritavillecaribbean.com/content/uploads/2017/07/ocho-exterior-beach-hut-190x110.jpg" alt="Margaritaville Ocho Rios" loading="lazy">
                             </div>
                             <div class="guide-card-content">
                                 <h4>Margaritaville Ocho Rios</h4>
-                                <p>Beach-club vibe, pool & nightlife. Tourist-friendly fun with great food and drinks by the sea.</p>
-                                <a href="https://maps.app.goo.gl/gvA6b14och2jEozi6?g_st=aw" target="_blank" rel="noopener" class="map-link">Open in Google Maps →</a>
+                                <p>Beach-club vibe, pool &amp; nightlife. Tourist-friendly fun with great food and drinks by the sea.</p>
+                                <a href="https://maps.app.goo.gl/gvA6b14och2jEozi6?g_st=aw" target="_blank" rel="noopener" class="map-link">Open in Google Maps &rarr;</a>
                             </div>
                         </div>
                     </div>
@@ -396,67 +390,67 @@
 
                 <!-- Live Reggae & Nightlife -->
                 <div class="guide-category reveal">
-                    <h3>Live Reggae & Nightlife</h3>
+                    <h3>Live Reggae &amp; Nightlife</h3>
                     <div class="guide-grid">
                         <div class="guide-card">
                             <div class="guide-card-image">
-                                <img src="images/ocean11.jpg" alt="Ocean's 11 meal and waterfront table">
+                                <img src="images/ocean11.jpg" alt="Ocean's 11 meal and waterfront table" loading="lazy">
                             </div>
                             <div class="guide-card-content">
                                 <h4>Ocean's 11</h4>
-                                <p>Local legend on the water — frequent live reggae & karaoke nights. Authentic Jamaican vibes.</p>
-                                <a href="https://maps.app.goo.gl/E73MYjyt2ZveB7e16?g_st=aw" target="_blank" rel="noopener" class="map-link">Open in Google Maps →</a>
+                                <p>Local legend on the water &mdash; frequent live reggae &amp; karaoke nights. Authentic Jamaican vibes.</p>
+                                <a href="https://maps.app.goo.gl/E73MYjyt2ZveB7e16?g_st=aw" target="_blank" rel="noopener" class="map-link">Open in Google Maps &rarr;</a>
                             </div>
                         </div>
                         <div class="guide-card">
                             <div class="guide-card-image">
-                                <img src="images/icecream.jpg" alt="Plant-based ice cream in a cup">
+                                <img src="images/icecream.jpg" alt="Plant-based ice cream in a cup" loading="lazy">
                             </div>
                             <div class="guide-card-content">
                                 <h4>Plant-Based Ice Cream</h4>
                                 <p>Great vegan-friendly stop after the market. Delicious, healthy treats to cool you down.</p>
-                                <a href="https://maps.app.goo.gl/9CyaJK8yS277wjU38?g_st=aw" target="_blank" rel="noopener" class="map-link">Open in Google Maps →</a>
+                                <a href="https://maps.app.goo.gl/9CyaJK8yS277wjU38?g_st=aw" target="_blank" rel="noopener" class="map-link">Open in Google Maps &rarr;</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <p class="text-xs text-gray-500 mt-8 text-center max-w-3xl mx-auto" style="color: var(--text-light); font-size: 0.75rem; margin-top: 3rem;">
-                Photo credits: Miss T's Kitchen, Ciao Bella, Margaritaville Caribbean, ConnectingJamaica.com, Wikimedia Commons, Unsplash (ice cream). Schedules can change — check venue pages or call ahead.
+            <p style="color: var(--mist); font-size: 0.72rem; margin-top: 3.5rem; text-align: center; max-width: 680px; margin-left: auto; margin-right: auto;">
+                Photo credits: Miss T's Kitchen, Ciao Bella, Margaritaville Caribbean, ConnectingJamaica.com, Wikimedia Commons, Unsplash (ice cream). Schedules can change &mdash; check venue pages or call ahead.
             </p>
         </div>
     </section>
 
-    <!-- Apartments/Gallery Section -->
+    <!-- ===== Gallery / The Space ===== -->
     <section id="apartments-section">
         <div class="section-container">
             <div class="section-header reveal">
                 <div class="section-subtitle">Your Home Away</div>
-                <h2 class="section-title">The Apartment</h2>
+                <h2 class="section-title">The Space</h2>
             </div>
             <div class="carousel-wrapper reveal">
                 <div class="carousel-container">
                     <img id="carousel-image" src="images/living.avif" alt="Apartment interior" class="carousel-image">
                     <button id="prev-btn" class="carousel-btn prev" aria-label="Previous image">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                         </svg>
                     </button>
                     <button id="next-btn" class="carousel-btn next" aria-label="Next image">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </button>
                     <div class="carousel-counter">
-                        <span id="image-counter">1 / 21</span>
+                        <span id="image-counter">1 / 22</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Map Section -->
+    <!-- ===== Map ===== -->
     <section id="map-section">
         <div class="section-container">
             <div class="section-header reveal">
@@ -469,7 +463,7 @@
         </div>
     </section>
 
-    <!-- Booking Section -->
+    <!-- ===== Booking ===== -->
     <section id="booking-section">
         <div class="section-container">
             <div class="booking-container">
@@ -510,7 +504,7 @@
                                 buy-button-id="buy_btn_1S56bDHdqG9m6LJieTBB83wu"
                                 publishable-key="pk_live_ClDpJrR8opC2nUExgtPcgEyf00tBXYxGMD">
                             </stripe-buy-button>
-                            <p style="font-size: 0.75rem; margin-top: 1rem; opacity: 0.7;">Minimum/maximum are configured in your JMD Payment Link.</p>
+                            <p style="font-size: 0.72rem; margin-top: 1rem; opacity: 0.5;">Minimum/maximum are configured in your JMD Payment Link.</p>
                         </div>
                         <div class="payment-card">
                             <h4>Pay in USD ($)</h4>
@@ -519,7 +513,7 @@
                                 buy-button-id="buy_btn_1S4wNaHdqG9m6LJijg0GIrCm"
                                 publishable-key="pk_live_ClDpJrR8opC2nUExgtPcgEyf00tBXYxGMD">
                             </stripe-buy-button>
-                            <p style="font-size: 0.75rem; margin-top: 1rem; opacity: 0.7;">Minimum/maximum are configured in your USD Payment Link.</p>
+                            <p style="font-size: 0.72rem; margin-top: 1rem; opacity: 0.5;">Minimum/maximum are configured in your USD Payment Link.</p>
                         </div>
                     </div>
                 </div>
@@ -527,11 +521,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===== Footer ===== -->
     <footer>
         <div class="section-container footer-inner">
             <div>
-                <div class="logo" style="margin-bottom: 0.5rem;">Carib212</div>
+                <div class="logo" style="margin-bottom: 0.35rem;">Carib<span style="font-weight:400;">212</span></div>
                 <p>&copy; 2025 Carib212. All rights reserved. Your Caribbean home in Ocho Rios, Jamaica.</p>
             </div>
             <div>
@@ -542,21 +536,18 @@
                     aria-label="Book on Airbnb (opens in a new tab)"
                     class="airbnb-footer-button"
                 >
-                    <img
-                        src="images/airbnb.png"
-                        alt="Airbnb"
-                    />
+                    <img src="images/airbnb.png" alt="Airbnb">
                     <span>Book on Airbnb</span>
                 </a>
             </div>
         </div>
     </footer>
 
-    <!-- Stripe Script -->
+    <!-- Stripe -->
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
     <script>
-        // Carousel images array
+        /* ── Carousel ── */
         const apartmentImages = [
             "images/sundown.jpeg",
             "images/bathroom.avif",
@@ -593,81 +584,98 @@
         }
 
         function showImage(index) {
-            currentImage = index;
-            carouselImage.src = apartmentImages[index];
-            carouselImage.alt = `Apartment interior ${index + 1}`;
-            updateCounter();
+            carouselImage.style.opacity = '0';
+            setTimeout(() => {
+                currentImage = index;
+                carouselImage.src = apartmentImages[index];
+                carouselImage.alt = `Apartment interior ${index + 1}`;
+                updateCounter();
+                carouselImage.style.opacity = '1';
+            }, 250);
         }
 
         function nextImage() {
-            currentImage = (currentImage + 1) % apartmentImages.length;
-            showImage(currentImage);
+            showImage((currentImage + 1) % apartmentImages.length);
         }
 
         function prevImage() {
-            currentImage = (currentImage - 1 + apartmentImages.length) % apartmentImages.length;
-            showImage(currentImage);
+            showImage((currentImage - 1 + apartmentImages.length) % apartmentImages.length);
         }
 
         prevBtn.addEventListener("click", prevImage);
         nextBtn.addEventListener("click", nextImage);
 
-        // Keyboard navigation for carousel
         document.addEventListener("keydown", (e) => {
-            if (document.activeElement === prevBtn || document.activeElement === nextBtn) return;
             if (e.key === "ArrowLeft") prevImage();
             if (e.key === "ArrowRight") nextImage();
         });
 
-        // Initialize counter
         updateCounter();
 
-        // Navbar scroll effect
+        /* auto-advance every 5s, pause on hover */
+        let autoPlay = setInterval(nextImage, 5000);
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
+        carouselWrapper.addEventListener('mouseenter', () => clearInterval(autoPlay));
+        carouselWrapper.addEventListener('mouseleave', () => {
+            autoPlay = setInterval(nextImage, 5000);
+        });
+
+        /* ── Touch / swipe support ── */
+        let touchStartX = 0;
+        carouselWrapper.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        carouselWrapper.addEventListener('touchend', (e) => {
+            const diff = e.changedTouches[0].screenX - touchStartX;
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? prevImage() : nextImage();
+            }
+        }, { passive: true });
+
+        /* ── Navbar scroll ── */
+        const navbar = document.getElementById('navbar');
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    navbar.classList.toggle('scrolled', window.scrollY > 60);
+                    ticking = false;
+                });
+                ticking = true;
             }
         });
 
-        // Mobile menu toggle
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
+        /* ── Mobile menu ── */
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
-        // Scroll reveal animation
-        const reveals = document.querySelectorAll('.reveal');
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            menuToggle.innerHTML = isOpen ? '&#10005;' : '&#9776;';
+            menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        });
 
-        function checkReveals() {
-            reveals.forEach(reveal => {
-                const windowHeight = window.innerHeight;
-                const revealTop = reveal.getBoundingClientRect().top;
-                const revealPoint = 100;
-
-                if (revealTop < windowHeight - revealPoint) {
-                    reveal.classList.add('active');
+        /* ── Scroll reveal (Intersection Observer) ── */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-        window.addEventListener('scroll', checkReveals);
-        checkReveals(); // Check on load
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // Smooth scroll for anchor links
+        /* ── Smooth scroll for anchor links ── */
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    document.getElementById('navLinks').classList.remove('active');
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    navLinks.classList.remove('active');
+                    menuToggle.innerHTML = '&#9776;';
                 }
             });
         });
