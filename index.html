@@ -498,8 +498,8 @@
 
         <div class="carousel-stage">
           <img id="carousel-image"
-               src="images/living.avif"
-               alt="Apartment living area with ocean view"
+               src="images/sundown.jpeg"
+               alt="Sunset view from the condo terrace"
                class="carousel-img"
                width="960"
                height="600">
@@ -724,33 +724,57 @@
     counter.textContent = `${current + 1} / ${IMAGES.length}`;
   }
 
-  /* Directional crossfade: slide out, swap once the next image is decoded, slide in */
+  /* Two stacked images crossfade, so the stage never blinks to the dark background.
+     Native WAAPI here: end states are set inline first, so there is no frame where
+     an image snaps back before its final style lands. */
+  const CAN_FADE = !REDUCED && 'animate' in Element.prototype;
+  let front = carouselImg;
+  let back  = carouselImg.cloneNode();
+  back.removeAttribute('id');
+  back.alt = '';
+  back.setAttribute('aria-hidden', 'true');
+  back.style.opacity = '0';
+  carouselImg.after(back);
+
   let swapToken = 0;
+  let running = [];
   async function swapImage(index, dir) {
     const token = ++swapToken;
     const { src, alt } = IMAGES[index];
-    const pre = new Image();
-    pre.src = src;
-    /* Don't leave the stage blank if decoding stalls on a slow connection */
-    const ready = Promise.race([pre.decode().catch(() => {}), new Promise(r => setTimeout(r, 1500))]);
-
-    if (CAN_ANIMATE) {
-      await M.animate(carouselImg,
-        { opacity: 0, transform: `translateX(${-dir * 24}px)` },
-        { duration: 0.18, ease: 'easeIn' });
-    }
-    await ready;
+    /* Settle any in-flight fade before reusing the back image */
+    running.forEach(a => a.finish());
+    running = [];
+    const incoming = back;
+    incoming.src = src;
+    /* Wait for the decoded image, but don't stall forever on a slow connection */
+    await Promise.race([incoming.decode().catch(() => {}), new Promise(r => setTimeout(r, 1500))]);
     if (token !== swapToken) return;   /* a newer navigation superseded this one */
 
-    carouselImg.src = src;
-    carouselImg.alt = alt;
-    updateCounter();
+    const outgoing = front;
+    front = incoming;
+    back  = outgoing;
 
-    if (CAN_ANIMATE) {
-      M.animate(carouselImg,
-        { opacity: [0, 1], transform: [`translateX(${dir * 24}px)`, 'translateX(0px)'] },
-        { duration: 0.36, ease: EASE_OUT });
-    }
+    incoming.alt = alt;
+    incoming.removeAttribute('aria-hidden');
+    outgoing.alt = '';
+    outgoing.setAttribute('aria-hidden', 'true');
+    incoming.style.zIndex = '2';
+    outgoing.style.zIndex = '1';
+    incoming.style.opacity = '1';
+    outgoing.style.opacity = '0';
+
+    if (!CAN_FADE) return;
+    const opts = { duration: 520, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' };
+    running = [
+      incoming.animate([{ opacity: 0, transform: `translateX(${dir * 28}px)` }, { opacity: 1, transform: 'translateX(0)' }], opts),
+      outgoing.animate([{ opacity: 1, transform: 'translateX(0)' }, { opacity: 0, transform: `translateX(${-dir * 28}px)` }], opts),
+    ];
+  }
+
+  /* Keep the active thumbnail visible by scrolling the strip only — never the page */
+  function centerThumb(thumb) {
+    const left = thumb.offsetLeft - (thumbsEl.clientWidth - thumb.offsetWidth) / 2;
+    thumbsEl.scrollTo({ left, behavior: REDUCED ? 'auto' : 'smooth' });
   }
 
   function goTo(index, dir = 1) {
@@ -759,10 +783,10 @@
     thumbs[current].setAttribute('aria-pressed', 'false');
     current = (index + IMAGES.length) % IMAGES.length;
     swapImage(current, dir);
+    updateCounter();
     thumbs[current].classList.add('active');
     thumbs[current].setAttribute('aria-pressed', 'true');
-    /* Scroll thumb into view */
-    thumbs[current].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+    centerThumb(thumbs[current]);
   }
 
   const next = () => goTo(current + 1, 1);
