@@ -107,7 +107,7 @@
 
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
@@ -117,6 +117,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/site.css">
+
+  <!-- Hide .reveal elements until Motion animates them in (removed if Motion fails to load) -->
+  <script>document.documentElement.classList.add('has-motion');</script>
 </head>
 <body>
 
@@ -124,10 +127,10 @@
        MOBILE NAV OVERLAY
        ============================================================ -->
   <div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <a href="#adventures-section" class="reveal">Adventures</a>
-    <a href="#apartments-section" class="reveal">The Space</a>
-    <a href="#local-guide" class="reveal">Local Guide</a>
-    <a href="#booking-section" class="nav-reserve reveal">Reserve Now</a>
+    <a href="#adventures-section">Adventures</a>
+    <a href="#apartments-section">The Space</a>
+    <a href="#local-guide">Local Guide</a>
+    <a href="#booking-section" class="nav-reserve">Reserve Now</a>
   </div>
 
   <!-- ============================================================
@@ -631,7 +634,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="logo">Carib<span>212</span></div>
-        <p class="footer-copy">&copy; 2025 Carib212. All rights reserved. Your Caribbean home in Ocho Rios, Jamaica.</p>
+        <p class="footer-copy">&copy; <span id="year">2026</span> Carib212. All rights reserved. Your Caribbean home in Ocho Rios, Jamaica.</p>
       </div>
       <a href="https://airbnb.com/h/carib212"
          target="_blank"
@@ -647,10 +650,24 @@
   <!-- Stripe -->
   <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
+  <!-- Motion (formerly Framer Motion) — vanilla JS build -->
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.18.2/dist/motion.js"></script>
+
   <script>
   /* ════════════════════════════════════════════════════════════
      CARIB212 — UI JavaScript
      ════════════════════════════════════════════════════════════ */
+
+  /* ── Motion setup ────────────────────────────────────────── */
+  const M = window.Motion;
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CAN_ANIMATE = !!M && !REDUCED;
+  const EASE_OUT = [0.16, 1, 0.3, 1];   /* matches --ease-out */
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Without Motion, show all reveal content immediately */
+  if (!M) document.documentElement.classList.remove('has-motion');
 
   /* ── Carousel data ───────────────────────────────────────── */
   const IMAGES = [
@@ -699,7 +716,7 @@
     im.loading = 'lazy';
     im.setAttribute('aria-hidden', 'true');
     btn.appendChild(im);
-    btn.addEventListener('click', () => goTo(i));
+    btn.addEventListener('click', () => { goTo(i, i < current ? -1 : 1); resetAuto(); });
     thumbsEl.appendChild(btn);
   });
 
@@ -707,32 +724,49 @@
     counter.textContent = `${current + 1} / ${IMAGES.length}`;
   }
 
-  function goTo(index, noAnim) {
+  /* Directional crossfade: slide out, swap once the next image is decoded, slide in */
+  let swapToken = 0;
+  async function swapImage(index, dir) {
+    const token = ++swapToken;
+    const { src, alt } = IMAGES[index];
+    const pre = new Image();
+    pre.src = src;
+    /* Don't leave the stage blank if decoding stalls on a slow connection */
+    const ready = Promise.race([pre.decode().catch(() => {}), new Promise(r => setTimeout(r, 1500))]);
+
+    if (CAN_ANIMATE) {
+      await M.animate(carouselImg,
+        { opacity: 0, transform: `translateX(${-dir * 24}px)` },
+        { duration: 0.18, ease: 'easeIn' });
+    }
+    await ready;
+    if (token !== swapToken) return;   /* a newer navigation superseded this one */
+
+    carouselImg.src = src;
+    carouselImg.alt = alt;
+    updateCounter();
+
+    if (CAN_ANIMATE) {
+      M.animate(carouselImg,
+        { opacity: [0, 1], transform: [`translateX(${dir * 24}px)`, 'translateX(0px)'] },
+        { duration: 0.36, ease: EASE_OUT });
+    }
+  }
+
+  function goTo(index, dir = 1) {
     const thumbs = thumbsEl.querySelectorAll('.carousel-thumb');
     thumbs[current].classList.remove('active');
     thumbs[current].setAttribute('aria-pressed', 'false');
     current = (index + IMAGES.length) % IMAGES.length;
-    if (!noAnim) {
-      carouselImg.style.opacity = '0';
-      setTimeout(() => {
-        carouselImg.src = IMAGES[current].src;
-        carouselImg.alt = IMAGES[current].alt;
-        carouselImg.style.opacity = '1';
-        updateCounter();
-      }, 220);
-    } else {
-      carouselImg.src = IMAGES[current].src;
-      carouselImg.alt = IMAGES[current].alt;
-      updateCounter();
-    }
+    swapImage(current, dir);
     thumbs[current].classList.add('active');
     thumbs[current].setAttribute('aria-pressed', 'true');
     /* Scroll thumb into view */
     thumbs[current].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
   }
 
-  const next = () => goTo(current + 1);
-  const prev = () => goTo(current - 1);
+  const next = () => goTo(current + 1, 1);
+  const prev = () => goTo(current - 1, -1);
 
   nextBtn.addEventListener('click', () => { next(); resetAuto(); });
   prevBtn.addEventListener('click', () => { prev(); resetAuto(); });
@@ -793,10 +827,12 @@
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Close navigation menu');
     document.body.style.overflow = 'hidden';
-    /* Trigger overlay reveals */
-    overlay.querySelectorAll('.reveal').forEach((el, i) => {
-      setTimeout(() => el.classList.add('active'), i * 80);
-    });
+    /* Stagger the menu links in */
+    if (CAN_ANIMATE) {
+      M.animate(overlay.querySelectorAll('a'),
+        { opacity: [0, 1], transform: ['translateY(16px)', 'translateY(0px)'] },
+        { duration: 0.45, ease: EASE_OUT, delay: M.stagger(0.06, { startDelay: 0.08 }) });
+    }
   }
 
   function closeMenu() {
@@ -806,7 +842,6 @@
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open navigation menu');
     document.body.style.overflow = '';
-    overlay.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
   }
 
   toggle.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
@@ -820,20 +855,43 @@
     if (e.key === 'Escape' && menuOpen) closeMenu();
   });
 
-  /* ── IntersectionObserver scroll reveals ─────────────────── */
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.10, rootMargin: '0px 0px -48px 0px' });
+  /* ── Motion scroll reveals ───────────────────────────────── */
+  /* Animate in once, then hand back to CSS so hover transforms still work.
+     Motion commits final values inline a frame after resolving, so clear them two frames later. */
+  function reveal(els, delay) {
+    const list = Array.from(els);
+    list.forEach(el => el.classList.add('is-in'));
+    if (!CAN_ANIMATE) return;
+    const clear = () => list.forEach(el => { el.style.opacity = ''; el.style.transform = ''; });
+    M.animate(list,
+      { opacity: [0, 1], transform: ['translateY(24px)', 'translateY(0px)'] },
+      { duration: 0.7, ease: EASE_OUT, delay }
+    ).then(() => requestAnimationFrame(() => requestAnimationFrame(clear)));
+  }
 
-  document.querySelectorAll('.reveal').forEach(el => {
-    /* Skip overlay reveals — those are handled by menu open */
-    if (!el.closest('.nav-overlay')) io.observe(el);
-  });
+  if (M) {
+    const VIEW = { margin: '0px 0px -48px 0px', amount: 0.1 };
+
+    /* Small groups stagger their children together */
+    document.querySelectorAll('.reveal-group').forEach(group => {
+      M.inView(group, () => reveal(group.querySelectorAll(':scope > .reveal'), M.stagger(0.08)), VIEW);
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (el.parentElement.closest('.reveal-group')) return;
+      M.inView(el, () => reveal([el], 0), VIEW);
+    });
+
+    /* Hero copy eases up and fades as the hero scrolls away */
+    if (CAN_ANIMATE) {
+      M.scroll(
+        M.animate('.hero-content',
+          { opacity: [1, 0.15], transform: ['translateY(0px)', 'translateY(-72px)'] },
+          { ease: 'linear' }),
+        { target: document.querySelector('.hero'), offset: ['start start', 'end start'] }
+      );
+    }
+  }
 
   /* ── Smooth scroll for anchor links ──────────────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
