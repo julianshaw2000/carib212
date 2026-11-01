@@ -1,1 +1,7 @@
 .vercel
+
+# Internal working notes and draft copies. Kept on disk, never published:
+# GitHub Pages serves every tracked file under the repo root.
+*.md
+index-copy.html
+index-copy-current.html
